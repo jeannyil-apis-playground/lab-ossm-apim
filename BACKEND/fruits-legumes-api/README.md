@@ -225,7 +225,7 @@ _**:warning: cluster-admin privileges are required**_
 
 - [_3scale Toolbox_](https://access.redhat.com/documentation/en-us/red_hat_3scale_api_management/2.12/html/operating_3scale/the-threescale-toolbox#installing_the_toolbox_container_image) installed
 
-### 1. Create the API Product from the OpenAPI Specification
+#### 1. Create the API Product from the OpenAPI Specification
 
 The following command line imports the API in _Red Hat 3scale API Management_ and secures it using OpenID Connect from the OpenAPI Specification. _Red Hat SSO 7_ is used as the OpenID Connect Authorization Server.
 
@@ -241,7 +241,7 @@ The following command line imports the API in _Red Hat 3scale API Management_ an
 --verbose -d rhpds-apim-demo ./src/main/resources/openapi/openapi.json
 ```
 
-### 2. APICast policies to enforce for an end-to-end MTLS communication
+#### 2. APICast policies to enforce for an end-to-end MTLS communication
 
 The following APICast policies are to be leveraged in order to enforce an end-to-end MTLS communication:
 - [_TLS Client Certificate Validation_](https://access.redhat.com/documentation/en-us/red_hat_3scale_api_management/2.12/html/administering_the_api_gateway/apicast-policies#tls-client-certificate-validation_standard-policies) will allow the APICast gateway to validate the API consumer client certificate
