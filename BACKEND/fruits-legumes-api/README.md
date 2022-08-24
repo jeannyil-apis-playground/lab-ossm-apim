@@ -42,7 +42,7 @@ keytool -exportcert -alias fruits-legumes-api -keystore ./tls-keys/keystore.p12 
 
 ```script shell
 # Use the Java cacerts as the basis for the truststore
-cp /usr/local/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home/lib/security/cacerts ./tls-keys/truststore.p12
+cp ${JAVA_HOME}/lib/security/cacerts ./tls-keys/truststore.p12
 keytool -storepasswd -keystore ./tls-keys/truststore.p12 -storepass changeit -new 'P@ssw0rd'
 # Importing the client public certificate (client_cert) into the fruits-legumes-api truststore
 keytool -importcert -keystore ./tls-keys/truststore.p12 -storepass 'P@ssw0rd' -file ./tls-keys/apicast.crt -trustcacerts -noprompt
@@ -59,7 +59,7 @@ openssl s_client -showcerts -servername fruits-legumes-api-tls-staging.<OCP APPL
 # production APIcast gateway public certificate
 openssl s_client -showcerts -servername fruits-legumes-api-tls.<OCP APPLICATIONS DOMAIN> -connect fruits-legumes-api-tls.<OCP APPLICATIONS DOMAIN>:443
 ```
-with `<OCP APPLICATIONS DOMAIN>`: OCP applications domain. E.g.: `apps.cluster-l5mt5.l5mt5.sandbox1873.opentlc.com`
+with `<OCP APPLICATIONS DOMAIN>`: OCP applications domain. E.g.: `apps.cluster-jbb74.jbb74.sandbox1022.opentlc.com`
 
 ### 2. Running the application in dev mode
 
@@ -165,7 +165,7 @@ curl -k -vvv --cert ./tls-keys/apicast.crt --key ./tls-keys/apicast.key https://
             app.openshift.io/runtime: quarkus
         name: fruits-legumes-api-direct
     spec:
-        host: fruits-legumes-api-direct.apps.cluster-l5mt5.l5mt5.sandbox1873.opentlc.com
+        host: fruits-legumes-api-direct.apps.cluster-jbb74.jbb74.sandbox1022.opentlc.com
         port:
             targetPort: https
         tls:
@@ -234,10 +234,10 @@ The following command line imports the API in _Red Hat 3scale API Management_ an
 ```script shell
 3scale import openapi \
 --override-private-base-url='https://fruits-legumes-api.ceq-services-jvm.svc:443' \
---production-public-base-url='https://fruits-legumes-api.apps.cluster-l5mt5.l5mt5.sandbox1873.opentlc.com' \
---staging-public-base-url='https://fruits-legumes-api-staging.apps.cluster-l5mt5.l5mt5.sandbox1873.opentlc.com' \
+--production-public-base-url='https://fruits-legumes-api.apps.cluster-jbb74.jbb74.sandbox1022.opentlc.com' \
+--staging-public-base-url='https://fruits-legumes-api-staging.apps.cluster-jbb74.jbb74.sandbox1022.opentlc.com' \
 --oidc-issuer-type=keycloak \
---oidc-issuer-endpoint='https://rhpds-3scale-apim-demo-zync:FePg0fXDCqpm0EptPesoROh93AT9CwQB@sso.apps.cluster-l5mt5.l5mt5.sandbox1873.opentlc.com/auth/realms/openshift-cluster' \
+--oidc-issuer-endpoint='https://rhpds-3scale-apim-demo-zync:FePg0fXDCqpm0EptPesoROh93AT9CwQB@sso.apps.cluster-jbb74.jbb74.sandbox1022.opentlc.com/auth/realms/openshift-cluster' \
 --verbose -d rhpds-apim-demo ./src/main/resources/openapi/openapi.json
 ```
 
