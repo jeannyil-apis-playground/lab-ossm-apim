@@ -8,12 +8,16 @@ APICAST_NS="3scale-lab-ossm-gw"
 
 # Deploy the Prometheus datasource for 3scale AMP Grafana
 # /!\ Make sure the access token is CORRECT
-#     oc sa get-token grafana-serviceaccount -n $API_MANAGER_NS
+#     oc sa get-token grafana-serviceaccount -n $API_MANAGER_NS - /!\ Deprecated starting from OpenShift 4.11
+#                                                                     Get the token from the secret (revealed through oc describe sa grafana-serviceaccount)
+#                                                                     e.g. oc extract secret/grafana-serviceaccount-token-f4nqr --to=-
 oc apply -f ./MANIFESTS/3scale-apim_prometheus_grafanadatasource_cr.yaml -n $API_MANAGER_NS
 
 # Deploy the Prometheus datasource for 3scale AMP Grafana
 # /!\ Make sure the access token is CORRECT
-#     oc sa get-token grafana-serviceaccount -n $APICAST_NS
+#     oc sa get-token grafana-serviceaccount -n $APICAST_NS - /!\ Deprecated starting from OpenShift 4.11
+#                                                                 Get the token from the secret (revealed through oc describe sa grafana-serviceaccount)
+#                                                                 e.g. oc extract secret/grafana-serviceaccount-token-f4nqr --to=-
 oc apply -f ./MANIFESTS/3scale-gw_prometheus_grafanadatasource_cr.yaml -n $APICAST_NS
 
 # Deploy Grafana dashboards for self-managed 3scale APIcasts

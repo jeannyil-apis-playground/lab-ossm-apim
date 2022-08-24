@@ -59,12 +59,12 @@ quarkus:
       expose: false
     # CPU and Memory resources requirements when deployed on Kubernetes/OpenShift
     resources:
-        requests:
-            cpu: 30m
-            memory: 256Mi
-        limits:
-            cpu: 500m
-            memory: 256Mi
+      requests:
+        cpu: 30m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 256Mi
     # The type of service that will be generated for the application
     service-type: ClusterIP
     # Secrets to mount and where to mount them
@@ -115,7 +115,7 @@ quarkus:
     # large, eviction of previously selected resources could be triggered
     # with <code>excludePatterns</code>.
     resources:
-        includes: openapi/*
+      includes: openapi/*
 
   ## Camel Quarkus
   camel:

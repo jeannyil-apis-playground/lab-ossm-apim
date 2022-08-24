@@ -14,7 +14,7 @@
     },
     "servers": [
         {
-            "url": "http://camel-quarkus-http-camel-quarkus-native.apps.jeannyil.sandbox1789.opentlc.com",
+            "url": "http://fruits-and-legumes-api.apps.cluster-jbb74.jbb74.sandbox1022.opentlc.com",
             "description": "API Backend URL"
         }
     ],
