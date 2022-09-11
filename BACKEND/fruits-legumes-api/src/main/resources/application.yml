@@ -70,9 +70,9 @@ quarkus:
     # Secrets to mount and where to mount them
     secret-volumes:
       keystore-volume:
-        secret-name: keystore-secret
+        secret-name: ${camel.context.name}-keystore-secret
       truststore-volume:
-        secret-name: truststore-secret
+        secret-name: ${camel.context.name}-truststore-secret
     mounts:
       keystore-volume:
         path: /mnt/keystore.p12
@@ -150,6 +150,6 @@ quarkus:
       enabled: true
       secrets:
         # Secrets (list of strings) to look for in the namespace that the Kubernetes Client has been configured for 
-        ~: fruits-legumes-api-secret
+        ~: ${camel.context.name}-secret
         # Enable to generate the necessary role and corresponding role binding
         enabled: true
