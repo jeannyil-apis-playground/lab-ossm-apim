@@ -134,17 +134,17 @@ curl -k -vvv --cert ./tls-keys/apicast.crt --key ./tls-keys/apicast.key https://
     oc new-project ceq-services-jvm --display-name="Red Hat Camel Extensions for Quarkus Apps - JVM Mode"
     ```
 
-3. Create secret containing the keystore
+3. Create secret containing the fruits-legumes-api keystore (referenced in the project [`application.yml`](./src/main/resources/application.yml) configuration file)
 
     ```script shell
-    oc create secret generic keystore-secret \
+    oc create secret generic fruits-legumes-api-keystore-secret \
     --from-file=keystore.p12=./tls-keys/keystore.p12
     ```
 
-4. Create secret containing the truststore
+4. Create secret containing the fruits-legumes-api truststore (referenced in the project [`application.yml`](./src/main/resources/application.yml) configuration file)
 
     ```script shell
-    oc create secret generic truststore-secret \
+    oc create secret generic fruits-legumes-api-truststore-secret \
     --from-file=truststore.p12=./tls-keys/truststore.p12
     ```
 
