@@ -59,7 +59,7 @@ openssl s_client -showcerts -servername fruits-legumes-api-tls-staging.<OCP APPL
 # production APIcast gateway public certificate
 openssl s_client -showcerts -servername fruits-legumes-api-tls.<OCP APPLICATIONS DOMAIN> -connect fruits-legumes-api-tls.<OCP APPLICATIONS DOMAIN>:443
 ```
-with `<OCP APPLICATIONS DOMAIN>`: OCP applications domain. E.g.: `apps.cluster-mxflw.mxflw.sandbox618.opentlc.com`
+with `<OCP APPLICATIONS DOMAIN>`: OCP applications domain. E.g.: `apps.cluster-njnx5.njnx5.sandbox969.opentlc.com`
 
 ### 2. Running the application in dev mode
 
@@ -165,7 +165,7 @@ curl -k -vvv --cert ./tls-keys/apicast.crt --key ./tls-keys/apicast.key https://
             app.openshift.io/runtime: quarkus
         name: fruits-legumes-api-direct
     spec:
-        host: fruits-legumes-api-direct.apps.cluster-mxflw.mxflw.sandbox618.opentlc.com
+        host: fruits-legumes-api-direct.apps.cluster-njnx5.njnx5.sandbox969.opentlc.com
         port:
             targetPort: https
         tls:
@@ -234,10 +234,10 @@ The following command line imports the API in _Red Hat 3scale API Management_ an
 ```script shell
 3scale import openapi \
 --override-private-base-url='https://fruits-legumes-api.ceq-services-jvm.svc:443' \
---production-public-base-url='https://fruits-legumes-api.apps.cluster-mxflw.mxflw.sandbox618.opentlc.com' \
---staging-public-base-url='https://fruits-legumes-api-staging.apps.cluster-mxflw.mxflw.sandbox618.opentlc.com' \
+--production-public-base-url='https://fruits-legumes-api.apps.cluster-njnx5.njnx5.sandbox969.opentlc.com' \
+--staging-public-base-url='https://fruits-legumes-api-staging.apps.cluster-njnx5.njnx5.sandbox969.opentlc.com' \
 --oidc-issuer-type=keycloak \
---oidc-issuer-endpoint='https://rhpds-3scale-apim-demo-zync:FePg0fXDCqpm0EptPesoROh93AT9CwQB@sso.apps.cluster-mxflw.mxflw.sandbox618.opentlc.com/auth/realms/openshift-cluster' \
+--oidc-issuer-endpoint='https://rhpds-3scale-apim-demo-zync:FePg0fXDCqpm0EptPesoROh93AT9CwQB@sso.apps.cluster-njnx5.njnx5.sandbox969.opentlc.com/auth/realms/openshift-cluster' \
 --verbose -d rhpds-apim-demo ./src/main/resources/openapi/openapi.json
 ```
 
