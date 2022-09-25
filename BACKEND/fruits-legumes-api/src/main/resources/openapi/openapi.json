@@ -14,7 +14,7 @@
     },
     "servers": [
         {
-            "url": "http://fruits-and-legumes-api.apps.cluster-mxflw.mxflw.sandbox618.opentlc.com",
+            "url": "http://fruits-and-legumes-api.apps.cluster-njnx5.njnx5.sandbox969.opentlc.com",
             "description": "API Backend URL"
         }
     ],
