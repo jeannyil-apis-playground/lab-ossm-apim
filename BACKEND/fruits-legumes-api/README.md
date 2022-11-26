@@ -150,7 +150,7 @@ curl -k -vvv --cert ./tls-keys/apicast.crt --key ./tls-keys/apicast.key https://
 
 5. Deploy the CEQ service
     ```script shell
-    ./mvnw clean package -Dquarkus.kubernetes.deploy=true
+    ./mvnw clean package -Dquarkus.kubernetes.deploy=true -Dquarkus.container-image.group=ceq-services-jvm
     ```
 
 6. **OPTIONAL** - In order to test the service directly (without going through the _APICast gateway_), create a _passthrough_ OpenShift route:
